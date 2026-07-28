@@ -39,7 +39,10 @@ export function generateCaptionImage({
   letterSpacing = 1,
 }) {
   if (!fontRegistered) {
-    registerFont(fontPath, { family: "Montserrat" });
+    registerFont(fontPath, {
+      family: "Montserrat",
+      weight: "900",
+    });
     fontRegistered = true;
   }
 
@@ -47,7 +50,7 @@ export function generateCaptionImage({
 
   const measureCanvas = createCanvas(10, 10);
   const measureCtx = measureCanvas.getContext("2d");
-  measureCtx.font = `800 ${fontSize}px Montserrat`;
+  measureCtx.font = `900 ${fontSize}px "Montserrat"`;
 
   const maxTextWidth = videoWidth * 0.8;
   const words = processedText.split(" ");
@@ -81,7 +84,7 @@ export function generateCaptionImage({
   const canvas = createCanvas(canvasWidth, canvasHeight);
   const ctx = canvas.getContext("2d");
 
-  ctx.font = `800 ${fontSize}px Montserrat`;
+  ctx.font = `900 ${fontSize}px "Montserrat"`;
   ctx.textBaseline = "middle";
 
   const boxX = shadowBlur;
@@ -118,6 +121,10 @@ export function generateCaptionImage({
       ctx.textAlign = "left";
       let cursorX = centerX - lineWidth / 2 - ((line.length - 1) * letterSpacing) / 2;
       for (const char of line) {
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = "#000";
+        ctx.strokeText(char, cursorX, lineY);
+
         ctx.fillStyle = textColor;
         ctx.fillText(char, cursorX, lineY);
         cursorX += ctx.measureText(char).width + letterSpacing;

@@ -63,6 +63,7 @@
   padding: 3px 8px;
   border-radius: 999px;
 }
+
 @media (max-width: 640px) {
   .suggestionsForm {
     flex-direction: column;
