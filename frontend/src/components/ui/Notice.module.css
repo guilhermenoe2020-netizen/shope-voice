@@ -1,0 +1,30 @@
+.notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.notice svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.error {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+.success {
+  background: var(--tint-green);
+  color: var(--success);
+}
+
+.info {
+  background: var(--tint-violet);
+  color: var(--voice-violet-dark);
+}

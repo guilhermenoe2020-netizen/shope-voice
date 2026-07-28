@@ -1,0 +1,271 @@
+/* =========================================================
+   SHOPE VOICE — DESIGN TOKENS
+   Paleta: energia de voz (violeta/magenta) sobre um canvas
+   claro e neutro. O amarelo/preto é o "selo" da marca — o
+   mesmo estilo usado nas legendas exportadas — reaproveitado
+   como elemento de assinatura na própria interface.
+   ========================================================= */
+:root {
+  /* Cor base */
+  --ink: #14131f;
+  --ink-soft: #4b4960;
+  --canvas: #f6f5fa;
+  --surface: #ffffff;
+  --line: #e4e1ee;
+  --line-strong: #d3cfe4;
+
+  /* Marca */
+  --voice-violet: #6d28d9;
+  --voice-violet-dark: #4c1d95;
+  --voice-magenta: #ec4899;
+  --voice-gradient: linear-gradient(135deg, var(--voice-violet) 0%, var(--voice-magenta) 100%);
+
+  /* Selo (mesmo estilo da legenda queimada no vídeo) */
+  --stamp-yellow: #ffd400;
+  --stamp-black: #111111;
+
+  /* Semântica */
+  --success: #16a34a;
+  --danger: #dc2626;
+  --danger-bg: #fef2f2;
+
+  /* Superfícies em tom (usadas em chips, badges e estados selecionados) */
+  --tint-violet-soft: #f8f5fd;
+  --tint-violet: #f3edfc;
+  --tint-violet-strong: #ede4fb;
+  --tint-violet-border: #e4d4f9;
+  --tint-green: #f0fdf4;
+
+  /* Superfície "inversa" (cartões/itens em destaque com fundo escuro fixo) */
+  --surface-inverse: #14131f;
+  --text-on-inverse: #ffffff;
+
+  /* Tipografia */
+  --font-display: "Sora", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  /* Espaçamento (escala 4px) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* Raios e sombra */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --shadow-sm: 0 1px 2px rgba(20, 19, 31, 0.06);
+  --shadow-md: 0 8px 24px rgba(20, 19, 31, 0.08);
+  --shadow-lift: 0 12px 32px rgba(109, 40, 217, 0.18);
+
+  /* Layout do app shell */
+  --sidebar-width: 244px;
+  --bottomnav-height: 68px;
+  --topbar-height: 64px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+/* Acessibilidade: foco sempre visível */
+:focus-visible {
+  outline: 2px solid var(--voice-violet);
+  outline-offset: 2px;
+}
+
+/* Respeita preferência de menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Selo amarelo/preto — mesmo estilo das legendas exportadas */
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  background: var(--stamp-yellow);
+  color: var(--stamp-black);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  line-height: 1.6;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 999px;
+}
+
+[data-theme="dark"] {
+  --ink: #f2f1f8;
+  --ink-soft: #b3aec9;
+  --canvas: #100f18;
+  --surface: #1a1826;
+  --line: #2c2a3d;
+  --line-strong: #3a374f;
+
+  --voice-violet: #a78bfa;
+  --voice-violet-dark: #8b5cf6;
+  --voice-magenta: #f472b6;
+  --voice-gradient: linear-gradient(135deg, var(--voice-violet) 0%, var(--voice-magenta) 100%);
+
+  --success: #4ade80;
+  --danger: #f87171;
+  --danger-bg: #2c0b0b;
+
+  --tint-violet-soft: rgba(167, 139, 250, 0.12);
+  --tint-violet: rgba(167, 139, 250, 0.16);
+  --tint-violet-strong: rgba(167, 139, 250, 0.22);
+  --tint-violet-border: rgba(167, 139, 250, 0.35);
+  --tint-green: rgba(74, 222, 128, 0.14);
+
+  --surface-inverse: #241f38;
+  --text-on-inverse: #ffffff;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lift: 0 12px 32px rgba(167, 139, 250, 0.25);
+
+  color-scheme: dark;
+}
+
+body {
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Alternância de tema (claro/escuro) */
+.theme-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 56px;
+  height: 30px;
+  padding: 3px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--canvas);
+  flex-shrink: 0;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--voice-violet);
+}
+
+.theme-toggle .theme-toggle-icon {
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  transform: translateY(-50%);
+  color: var(--ink-soft);
+}
+
+.theme-toggle .theme-toggle-icon--sun {
+  left: 6px;
+}
+
+.theme-toggle .theme-toggle-icon--moon {
+  right: 6px;
+}
+
+.theme-toggle .theme-toggle-thumb {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--voice-gradient);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+  transform: translateX(0);
+  transition: transform 0.22s ease;
+}
+
+.theme-toggle .theme-toggle-thumb svg {
+  width: 14px;
+  height: 14px;
+}
+
+.theme-toggle[aria-checked="true"] .theme-toggle-thumb {
+  transform: translateX(26px);
+}
